@@ -1,0 +1,6 @@
+{
+  "extends": [ "@rviso/eslint-config" ],
+  "rules": {
+    // "prettier/prettier": "off"
+  }
+}

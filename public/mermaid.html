@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mermaid Viewer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      background-color: azure;
+    }
+    iframe {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <iframe src="http://localhost:3000/index.html" width="100%" height="100%"></iframe>
+  </div>
+  <script module>
+    const fs = require('fs');
+    const iframe = document.querySelector('iframe');
+    const urlParams = new URLSearchParams(window.location.search);
+    const filePath = urlParams.get('path');
+    const width = urlParams.get('width');
+    const height = urlParams.get('height');
+    const theme = urlParams.get('theme');
+    const lang = urlParams.get('lang');
+
+    const code = fs.readFileSync(filePath, 'utf8');
+
+    const data = JSON.stringify({
+      type: 'render',
+      payload: {
+        path: filePath,
+        code,
+        width: width,
+        height: height,
+        theme: theme,
+        lang: lang
+      }
+    });
+    iframe.onload = () => iframe.contentWindow.postMessage(data, '*');
+  </script>
+</body>
+</html>

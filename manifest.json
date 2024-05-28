@@ -1,0 +1,21 @@
+{
+  "id": "b3ca0644-1d66-4d18-89bd-08ef6506cc78",
+  "version": "1.0.0",
+  "platform": "all",
+  "arch": "all",
+  "name": "eagle-mermaid-plugin",
+  "logo": "/favicon.ico",
+  "keywords": ["mermaid"],
+  "devTools": false,
+  "preview": {
+    "mermaid": {
+      "thumbnail": {
+        "path": "public/thumbnail.js",
+        "size": 400
+      },
+      "viewer": {
+        "path": "public/mermaid.html"
+      }
+    }
+  }
+}
